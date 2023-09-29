@@ -63,11 +63,11 @@ namespace LYA1_Lexico2
                         else if (c == '!')
                             estado = 13;
 
-                        else if (c == '>' || c == '<')
-                            estado = 16;
-
                         else if (c == '<')
                             estado = 17;
+
+                        else if (c == '>' || c == '<')
+                            estado = 16;
 
                         else if (c == '+')
                             estado = 19;
@@ -171,31 +171,23 @@ namespace LYA1_Lexico2
 
                     case 12:
                         setClasificacion(Tipos.Caracter);
-
                         if (c == '|')
                             estado = 14;
                         else
                             estado = F;
-
-
                         break;
 
-
                     case 13:
-
                         setClasificacion(Tipos.OpLogico);
-
 
                         if (c == '=')
                             estado = 15;
+
+
                         else
                             estado = F;
 
-
-
-
                         break;
-
 
                     case 14:
 
@@ -228,7 +220,12 @@ namespace LYA1_Lexico2
                     ///probar
                     case 17:
                         setClasificacion(Tipos.OpRelacional);
+
+
+
                         if (c == '=' || c == '>')
+
+
 
                             estado = 18;
 
@@ -283,8 +280,6 @@ namespace LYA1_Lexico2
                         break;
 
 
-
-
                     case 22:
 
 
@@ -321,23 +316,57 @@ namespace LYA1_Lexico2
 
 
                     case 25:
-
                         setClasificacion(Tipos.Cadena);
+                        /**
+                        if(archivo.EndOfStream){
+
+                          estado = E;
+                        }
                         
-                        if ((c=(char)archivo.Peek())!='\"')
+                        else if(c!='\"'){
+
+                          estado=25;
+                          
+                         }  
+
+                          
+                          else
+                          estado=26;
+                          
+                         break;
+                         **\
+
+                        /**
+                        if((int) c!=34){
+                          estado=25;
+                          if(archivo.EndOfStream){ 
+
+                          estado = E;
+                        }
+                         }  
+                          else
+                          estado=26;
+                          
+                         break;
+                         **/
+                        if (archivo.EndOfStream)
                         {
 
+                            estado = E;
+                        }
+                        else if (c != '\"')
+                        {
                             estado = 25;
-                        }if(archivo.EndOfStream)
-                        estado= E;
 
+                        }
                         else
+                        {
+
                             estado = 26;
-
-
-
+                        }
 
                         break;
+
 
 
                     case 26:
@@ -353,7 +382,6 @@ namespace LYA1_Lexico2
                     case 27:
                         setClasificacion(Tipos.Caracter);
                         estado = F;
-
                         break;
 
                 }
