@@ -156,13 +156,9 @@ namespace LYA1_Lexico2
                     case 10:
                         setClasificacion(Tipos.FinDeSentencia);
                         estado = F;
-
                         break;
-
                     case 11:
-
                         setClasificacion(Tipos.Caracter);
-
                         if (c == '&')
                             estado = 14;
                         else
@@ -183,7 +179,6 @@ namespace LYA1_Lexico2
                         if (c == '=')
                             estado = 15;
 
-
                         else
                             estado = F;
 
@@ -193,9 +188,6 @@ namespace LYA1_Lexico2
 
                         setClasificacion(Tipos.OpLogico);
                         estado = F;
-
-
-
                         break;
                     case 15:
                         setClasificacion(Tipos.OpRelacional);
@@ -221,8 +213,6 @@ namespace LYA1_Lexico2
                     case 17:
                         setClasificacion(Tipos.OpRelacional);
 
-
-
                         if (c == '=' || c == '>')
 
 
@@ -231,31 +221,24 @@ namespace LYA1_Lexico2
 
 
                         else
-
                             estado = F;
-
                         break;
 
                     ///
                     case 18:
-
                         estado = F;
-
                         break;
 
                     case 19:
 
                         setClasificacion(Tipos.OpTermino);
-
                         if (c == '+' || c == '=')
 
                             estado = 21;
                         else
                             estado = F;
 
-
                         break;
-
 
                     case 20:
 
@@ -265,8 +248,6 @@ namespace LYA1_Lexico2
                         else
                             estado = F;
 
-
-
                         break;
 
 
@@ -274,8 +255,6 @@ namespace LYA1_Lexico2
 
                         setClasificacion(Tipos.IncTermino);
                         estado = F;
-
-
 
                         break;
 
@@ -310,16 +289,12 @@ namespace LYA1_Lexico2
                         setClasificacion(Tipos.OpTernario);
                         estado = F;
 
-
                         break;
-
-
 
                     case 25:
                         setClasificacion(Tipos.Cadena);
                         /**
                         if(archivo.EndOfStream){
-
                           estado = E;
                         }
                         
@@ -329,7 +304,6 @@ namespace LYA1_Lexico2
                           
                          }  
 
-                          
                           else
                           estado=26;
                           
@@ -351,7 +325,6 @@ namespace LYA1_Lexico2
                          **/
                         if (archivo.EndOfStream)
                         {
-
                             estado = E;
                         }
                         else if (c != '\"')
@@ -367,23 +340,16 @@ namespace LYA1_Lexico2
 
                         break;
 
-
-
                     case 26:
-
-
                         setClasificacion(Tipos.Cadena);
-
                         estado = F;
-
-
                         break;
                     //FINAL TOKEN
                     case 27:
                         setClasificacion(Tipos.Caracter);
                         estado = F;
                         break;
-
+                   
                 }
                 if (estado >= 0)
                 {
